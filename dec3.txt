@@ -1,24 +1,23 @@
-pipeline {
+node {
 
-agent any
+// Define parameters
 
+properties([
 
-parameters {
+parameters([
 
-string(name: 'NUM1', defaultValue: '0', description: 'Enter first number')
+string(name: 'NUM1', defaultValue: '0', description: 'Enter first number'),
 
 string(name: 'NUM2', defaultValue: '0', description: 'Enter second number')
 
-}
+])
 
+])
 
-stages {
 
 stage('Addition and Subtraction') {
 
-steps {
-
-script {
+// Accessing parameters (always strings by default)
 
 def num1 = params.NUM1.toInteger()
 
@@ -37,11 +36,3 @@ echo "The difference of ${num1} and ${num2} is: ${difference}"
 }
 
 }
-
-}
-
-}
-
-}
-
-
